@@ -1,0 +1,33 @@
+{
+  "name": "rx-webrpc",
+  "version": "1.0.0",
+  "description": "rx-webrpc is a reactive wrapper for web grpc invokes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flowup/rx-webrpc.git"
+  },
+  "keywords": [
+    "rxjs",
+    "grpc",
+    "webrpc"
+  ],
+  "author": "Peter Malina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flowup/rx-webrpc/issues"
+  },
+  "homepage": "https://github.com/flowup/rx-webrpc#readme",
+  "dependencies": {
+    "google-protobuf": "^3.2.0",
+    "grpc-web-client": "0.2.0",
+    "rxjs": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.2.5",
+    "webpack": "^3.0.0"
+  }
+}
