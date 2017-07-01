@@ -1,5 +1,5 @@
 {
-  "name": "rx-webrpc",
+  "name": "@flowup/rx-webrpc",
   "version": "1.0.0",
   "description": "rx-webrpc is a reactive wrapper for web grpc invokes",
   "main": "index.js",
@@ -28,6 +28,9 @@
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.2.5",
+    "path": "^0.12.7",
+    "ts-loader": "^2.2.1",
+    "typescript": "^2.4.1",
     "webpack": "^3.0.0"
   }
 }

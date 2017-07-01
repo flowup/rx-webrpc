@@ -1,9 +1,10 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: "./src/index.ts",
   output: {
-    path: 'bundle',
+    path: path.resolve(__dirname, 'bundle'),
     filename: 'index.js'
   },
   devtool: 'inline-source-map',
@@ -21,8 +22,5 @@ module.exports = {
     extensions: [".ts", ".js"]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'USE_TLS': process.env.USE_TLS !== undefined
-    })
   ]
 };

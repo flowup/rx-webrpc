@@ -1,11 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "sourceMap": true
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "typeRoots": [
     "node_modules/@types"
   ],
   "exclude": [
+  ],
+  "lib": [
+    "es2016"
   ]
 }
