@@ -4,7 +4,9 @@
   "description": "rx-webrpc is a reactive wrapper for web grpc invokes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "publish": "yarn build && cd bundle && npm publish"
   },
   "repository": {
     "type": "git",
@@ -22,15 +24,18 @@
   },
   "homepage": "https://github.com/flowup/rx-webrpc#readme",
   "dependencies": {
+    "core-js": "^2.4.1",
     "google-protobuf": "^3.2.0",
     "grpc-web-client": "0.2.0",
     "rxjs": "^5.1.0"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.42",
     "@types/google-protobuf": "^3.2.5",
+    "awesome-typescript-loader": "^3.2.1",
+    "copy-webpack-plugin": "^4.0.1",
     "path": "^0.12.7",
-    "ts-loader": "^2.2.1",
-    "typescript": "^2.4.1",
+    "typescript": "~2.3.3",
     "webpack": "^3.0.0"
   }
 }

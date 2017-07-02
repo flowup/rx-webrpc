@@ -5,14 +5,12 @@
     "declaration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-  },
-  "typeRoots": [
-    "node_modules/@types"
-  ],
-  "exclude": [
-  ],
-  "lib": [
-    "es2016"
-  ]
+    "experimentalDecorators": true,
+    "lib": [
+      "es2015", "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
 }

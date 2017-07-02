@@ -1,8 +1,8 @@
 import { grpc, BrowserHeaders } from 'grpc-web-client';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as jspb from 'google-protobuf';
 
-interface RPCResponse<R> {
+export interface RPCResponse<R> {
   headers: BrowserHeaders;
   trailers: BrowserHeaders;
   value: R;
@@ -10,11 +10,11 @@ interface RPCResponse<R> {
   message: string;
 }
 
-interface RPCOpts {
+export interface RPCOpts {
   host: string;
 }
 
-function toMessage<T>(obj: any, to: { new(): T; }): T {
+export function toMessage<T>(obj: any, to: { new(): T; }): T {
   const res = new to();
   for (const key in obj) {
     if (!obj.hasOwnProperty(key)) {
@@ -34,9 +34,8 @@ function toMessage<T>(obj: any, to: { new(): T; }): T {
   return res;
 }
 
-class RPCProvider {
-  constructor(private opts: RPCOpts) {
-  }
+export class RPCProvider {
+  constructor(private opts: RPCOpts) {}
 
   call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>,
                                                              req: TReq): Observable<RPCResponse<TRes>> {
@@ -44,7 +43,7 @@ class RPCProvider {
   }
 }
 
-function call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>, opts: RPCOpts,
+export function call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>, opts: RPCOpts,
                                                                     req: TReq): Observable<RPCResponse<TRes>> {
 
   return Observable.create(sub => {
