@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "./bundle",
     "sourceMap": true,
     "declaration": true,
     "moduleResolution": "node",

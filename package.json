@@ -1,6 +1,6 @@
 {
   "name": "@flowup/rx-webrpc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "rx-webrpc is a reactive wrapper for web grpc invokes",
   "main": "index.js",
   "private": false,
