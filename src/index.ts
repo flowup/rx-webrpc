@@ -12,6 +12,8 @@ export interface RPCResponse<R> {
 
 export interface RPCOpts {
   host: string;
+  headers?: BrowserHeaders;
+  debug?: boolean;
 }
 
 export function toMessage<T>(obj: any, to: { new(): T; }): T {
@@ -35,11 +37,12 @@ export function toMessage<T>(obj: any, to: { new(): T; }): T {
 }
 
 export class RPCProvider {
-  constructor(private opts: RPCOpts) {}
+  constructor(private opts: RPCOpts) {
+  }
 
   call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>,
-                                                             req: TReq): Observable<RPCResponse<TRes>> {
-    return call<TReq, TRes>(method, this.opts, req);
+                                                             req: TReq, opts?: RPCOpts): Observable<RPCResponse<TRes>> {
+    return call<TReq, TRes>(method, opts || this.opts, req);
   }
 }
 
@@ -48,7 +51,7 @@ export function createRPCProvider(opts: RPCOpts): RPCProvider {
 }
 
 export function call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>, opts: RPCOpts,
-                                                                    req: TReq): Observable<RPCResponse<TRes>> {
+                                                                           req: TReq): Observable<RPCResponse<TRes>> {
 
   return Observable.create(sub => {
     const response: RPCResponse<TRes> = <RPCResponse<TRes>>{};
@@ -56,6 +59,9 @@ export function call<TReq extends jspb.Message, TRes extends jspb.Message>(metho
     grpc.invoke(method, {
       request: req,
       host: opts.host,
+      headers: opts.headers,
+      debug: opts.debug,
+
       onHeaders: (headers: BrowserHeaders) => {
         response.headers = headers;
       },
