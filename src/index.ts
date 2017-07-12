@@ -43,6 +43,10 @@ export class RPCProvider {
   }
 }
 
+export function createRPCProvider(opts: RPCOpts): RPCProvider {
+  return new RPCProvider(opts);
+}
+
 export function call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>, opts: RPCOpts,
                                                                     req: TReq): Observable<RPCResponse<TRes>> {
 
