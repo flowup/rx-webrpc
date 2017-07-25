@@ -37,7 +37,7 @@ export function toMessage<T>(obj: any, to: { new(): T; }): T {
 }
 
 export class RPCProvider {
-  constructor(private opts: RPCOpts) {
+  constructor(public opts: RPCOpts) {
   }
 
   call<TReq extends jspb.Message, TRes extends jspb.Message>(method: grpc.MethodDefinition<TReq, TRes>,
@@ -66,7 +66,7 @@ export function call<TReq extends jspb.Message, TRes extends jspb.Message>(metho
         response.headers = headers;
       },
       onMessage: (message: any) => {
-        response.value = message.toObject();
+        response.value = message;
       },
       onEnd: (code: grpc.Code, msg: string, trailers: BrowserHeaders) => {
         response.code = code;
